@@ -709,7 +709,7 @@ HAL_UART_Receive_DMA(&huart2, buffer_receive_UART, 12);
 		}						
 		
 //-------     TEST receive command L (set package length) 
-		if((buffer_receive_UART[0] == 0x4C) && (buffer_receive_UART[8] == 0x29))
+		if((buffer_receive_UART[0] == 0x4C) && (buffer_receive_UART[5] == 0x29))
 		{
 						for(iii=0;iii<=15;iii++)
 							{
