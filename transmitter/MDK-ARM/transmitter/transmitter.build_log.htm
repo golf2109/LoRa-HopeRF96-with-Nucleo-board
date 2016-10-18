@@ -21,8 +21,8 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TARMCM1.DLL V1.10.0.0
  
 <h2>Project:</h2>
-C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter.uvprojx
-Project File Date:  07/25/2016
+H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter.uvprojx
+Project File Date:  10/18/2016
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 2 (build 183)', folder: 'C:\Keil_v520\ARM\ARMCC\Bin'
@@ -31,15 +31,19 @@ assembling startup_stm32l053xx.s...
 compiling stm32l0xx_hal_msp.c...
 compiling main.c...
 compiling stm32l0xx_it.c...
+compiling dma.c...
+compiling gpio.c...
+compiling spi.c...
+compiling usart.c...
 compiling system_stm32l0xx.c...
 compiling stm32l0xx_hal_uart.c...
 compiling stm32l0xx_hal_pwr_ex.c...
 compiling stm32l0xx_hal_pwr.c...
 compiling stm32l0xx_hal_rcc.c...
 compiling stm32l0xx_hal_flash_ex.c...
-compiling stm32l0xx_hal_tim_ex.c...
-compiling stm32l0xx_hal_rcc_ex.c...
 compiling stm32l0xx_hal_i2c.c...
+compiling stm32l0xx_hal_rcc_ex.c...
+compiling stm32l0xx_hal_tim_ex.c...
 compiling stm32l0xx_hal_tim.c...
 compiling stm32l0xx_hal_dma.c...
 compiling stm32l0xx_hal_cortex.c...
@@ -51,67 +55,75 @@ compiling stm32l0xx_hal_flash_ramfunc.c...
 compiling stm32l0xx_hal_flash.c...
 compiling stm32l0xx_hal_spi.c...
 linking...
-Program Size: Code=11756 RO-data=260 RW-data=80 ZI-data=1744  
+Program Size: Code=12060 RO-data=260 RW-data=96 ZI-data=1984  
 After Build - User command #1: C:\keilkill.bat
-C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM>REM	uncomment line for delete browser information del *.crf /s 
-C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM>REM	del *.crf /s 
-C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM>del *.o /s 
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\main.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\startup_stm32l053xx.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_cortex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_dma.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ramfunc.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_gpio.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c_ex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_msp.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr_ex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc_ex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_spi.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim_ex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart_ex.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_it.o
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\system_stm32l0xx_1.o
-C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM>del *.d /s 
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\main.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\startup_stm32l053xx.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_cortex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_dma.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ramfunc.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_gpio.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c_ex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_msp.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr_ex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc_ex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_spi.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim_ex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart_ex.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\stm32l0xx_it.d
-Удален файл - C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\transmitter\system_stm32l0xx_1.d
-C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM>exit
+H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM>REM	uncomment line for delete browser information del *.crf /s 
+H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM>REM del *.crf /s 
+H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM>del *.o /s 
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\dma.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\gpio.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\main.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\spi.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\startup_stm32l053xx.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_cortex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_dma.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ramfunc.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_gpio.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c_ex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_msp.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr_ex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc_ex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_spi.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim_ex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart_ex.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_it.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\system_stm32l0xx_1.o
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\usart.o
+H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM>del *.d /s 
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\dma.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\gpio.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\main.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\spi.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\startup_stm32l053xx.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_cortex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_dma.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_flash_ramfunc.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_gpio.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_i2c_ex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_msp.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_pwr_ex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_rcc_ex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_spi.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_tim_ex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_hal_uart_ex.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\stm32l0xx_it.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\system_stm32l0xx_1.d
+Удален файл - H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\transmitter\usart.d
+H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM>exit
 "transmitter\transmitter.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
-  C:\!STM32\LoRa\!!!!_New_send\transmitter\MDK-ARM\RTE
+  H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\transmitter\MDK-ARM\RTE
   C:\Keil_v520\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:16
+Build Time Elapsed:  00:00:09
 </pre>
 </body>
 </html>

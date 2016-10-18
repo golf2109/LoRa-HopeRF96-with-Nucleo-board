@@ -22,6 +22,10 @@
 "receiver\stm32l0xx_it.o"
 "receiver\stm32l0xx_hal_msp.o"
 "receiver\f10x-pcd8544.o"
+"receiver\gpio.o"
+"receiver\spi.o"
+"receiver\usart.o"
+"receiver\dma.o"
 "receiver\system_stm32l0xx_1.o"
 --library_type=microlib --strict --scatter "receiver\receiver.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes -o receiver\receiver.axf

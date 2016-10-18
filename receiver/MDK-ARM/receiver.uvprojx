@@ -334,7 +334,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32L053xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                                  ../Drivers/STM32L0xx_HAL_Driver/Inc;                                  ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy;                                  ../Drivers/CMSIS/Include;                                  ../Drivers/CMSIS/Device/ST/STM32L0xx/Include</IncludePath>
+              <IncludePath>../Inc;                                    ../Drivers/STM32L0xx_HAL_Driver/Inc;                                    ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy;                                    ../Drivers/CMSIS/Include;                                    ../Drivers/CMSIS/Device/ST/STM32L0xx/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -511,6 +511,26 @@
               <FileName>f10x-pcd8544.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Src\f10x-pcd8544.h</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/dma.c</FilePath>
             </File>
           </Files>
         </Group>

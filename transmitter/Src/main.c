@@ -32,6 +32,10 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
+#include "dma.h"
+#include "spi.h"
+#include "usart.h"
+#include "gpio.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -45,16 +49,6 @@
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
-SPI_HandleTypeDef hspi2;
-DMA_HandleTypeDef hdma_spi2_rx;
-DMA_HandleTypeDef hdma_spi2_tx;
-
-UART_HandleTypeDef huart1;
-UART_HandleTypeDef huart2;
-DMA_HandleTypeDef hdma_usart1_tx;
-DMA_HandleTypeDef hdma_usart1_rx;
-DMA_HandleTypeDef hdma_usart2_tx;
-DMA_HandleTypeDef hdma_usart2_rx;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -88,21 +82,19 @@ uint8_t	l_100,l_10,l_1;
 uint8_t	f_100000,f_10000,f_1000,f_100,f_10,f_1;
 uint32_t freq_hex1,freq_hex2;
 uint8_t power_bits;
-uint8_t spread;
+uint8_t spread, spread_read,spread_write,spread_mask;
 uint8_t	time_sec;
 extern	uint8_t* out1,out2;
 extern	uint8_t spiTxData[2];
 extern	uint8_t spiRxData[2];
+	
+uint8_t www[6];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void Error_Handler(void);
-static void MX_GPIO_Init(void);
-static void MX_DMA_Init(void);
-static void MX_SPI2_Init(void);
-static void MX_USART1_UART_Init(void);
-static void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -302,8 +294,7 @@ dig[0] = 0x30 + hexdig/100;
 dig[1] = 0x30 + (hexdig - 100*(hexdig/100))/10;
 dig[2] = 0x30 + (hexdig - 100*(hexdig/100) - 10*((hexdig - 100*(hexdig/100))/10));
 }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 void	hex_string(uint32_t packet_number, uint8_t* string_packet)
 {
 	uint8_t u[8];
@@ -324,7 +315,8 @@ void	hex_string(uint32_t packet_number, uint8_t* string_packet)
 	u[0] = (packet_number - u[7]*10000000 - u[6]*1000000 - u[5]*100000 - u[4]*10000 - u[3]*1000 - u[2]*100 - u[1]*10);
 	*(string_packet + 7) = 0x30 + u[0];
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /* USER CODE END 0 */
 
 int main(void)
@@ -366,7 +358,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
 
   while (1)
   {
@@ -511,7 +502,7 @@ HAL_UART_Receive_DMA(&huart2, buffer_receive_UART, 12);
 							{
 								receive_UART[iii] = buffer_receive_UART[iii];
 							}		
-			f_100000 = 
+			f_100000 = 0xF & receive_UART[2];
 			f_10000	= 0xF & receive_UART[3];
 			f_1000 = 0xF & receive_UART[4];
 			f_100	= 0xF & receive_UART[5];
@@ -531,10 +522,18 @@ HAL_UART_Receive_DMA(&huart2, buffer_receive_UART, 12);
 		
   //Set carrier frequency
   //433.175 MHz / 61.035 Hz = 7097157 = 0x6C4B45
+	www[0] = RFM_Read(0x06);
+	www[1] = RFM_Read(0x07);		
+	www[2] = RFM_Read(0x08);	
+		
   RFM_Write(0x06,F_23_16);
   RFM_Write(0x07,F_15_8);
   RFM_Write(0x08,F_7_0);		
-				
+
+	www[3] = RFM_Read(0x06);
+	www[4] = RFM_Read(0x07);		
+	www[5] = RFM_Read(0x08);		
+		
   //Set RFM in continues receive
   RFM_Write(0x01,0x85);
   //Wait for mode ready
@@ -635,9 +634,11 @@ HAL_UART_Receive_DMA(&huart2, buffer_receive_UART, 12);
 							{
 								receive_UART[iii] = buffer_receive_UART[iii];
 							}		
-						spread = 0x7 & receive_UART[2];						
-						spread = spread + 5;
-						spread = 0x4 | spread;
+						spread_read = RFM_Read(0x1E);
+						spread_mask = 0xF & receive_UART[2];
+						if(spread_mask > 6){spread_mask = 6;}
+						spread = 0x60 + (spread_mask << 4);
+						spread_write = spread | (0x0f & spread_read);
 
   //Spreading factor 6, PayloadCRC on
   //RFM_Write(0x1E,0x64);							
@@ -796,141 +797,6 @@ void SystemClock_Config(void)
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-}
-
-/* SPI2 init function */
-static void MX_SPI2_Init(void)
-{
-
-  hspi2.Instance = SPI2;
-  hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
-  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi2.Init.CRCPolynomial = 7;
-  if (HAL_SPI_Init(&hspi2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-}
-
-/* USART1 init function */
-static void MX_USART1_UART_Init(void)
-{
-
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-}
-
-/* USART2 init function */
-static void MX_USART2_UART_Init(void)
-{
-
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-}
-
-/** 
-  * Enable DMA controller clock
-  */
-static void MX_DMA_Init(void) 
-{
-  /* DMA controller clock enable */
-  __HAL_RCC_DMA1_CLK_ENABLE();
-
-  /* DMA interrupt init */
-  /* DMA1_Channel2_3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
-  /* DMA1_Channel4_5_6_7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel4_5_6_7_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel4_5_6_7_IRQn);
-
-}
-
-/** Configure pins as 
-        * Analog 
-        * Input 
-        * Output
-        * EVENT_OUT
-        * EXTI
-*/
-static void MX_GPIO_Init(void)
-{
-
-  GPIO_InitTypeDef GPIO_InitStruct;
-
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  /*Configure GPIO pin : B1_Pin */
-  GPIO_InitStruct.Pin = B1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : LD2_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : RST_Pin CS_Pin */
-  GPIO_InitStruct.Pin = RST_Pin|CS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : DIO0_Pin DIO5_Pin */
-  GPIO_InitStruct.Pin = DIO0_Pin|DIO5_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, RST_Pin|CS_Pin, GPIO_PIN_RESET);
-
 }
 
 /* USER CODE BEGIN 4 */
