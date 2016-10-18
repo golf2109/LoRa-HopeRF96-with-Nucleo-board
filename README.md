@@ -45,4 +45,5 @@ command  L(lll)   set  length for transmitter
 
 lll - decimal digits from 01 to 127
 
-
+Length of all command 12 byte  !!!
+If number of byte of command < 12 byte - add space code (0x20 hex)
