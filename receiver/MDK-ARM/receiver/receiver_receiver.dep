@@ -558,7 +558,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x5779F33C)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x5779F33C)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x5779F33C)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x5779F33C)
-F (../Src/main.c)(0x58064D72)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Include -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include --C99-I H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\receiver\MDK-ARM\RTE-I C:\Keil_v520\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-I C:\Keil_v520\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o receiver\main.o --omf_browse receiver\main.crf --depend receiver\main.d)
+F (../Src/main.c)(0x580CF1B5)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Include -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include --C99-I H:\!STM32\Work\Postirayka\LoRa\!!!!_New_send_CRC\receiver\MDK-ARM\RTE-I C:\Keil_v520\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-I C:\Keil_v520\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o receiver\main.o --omf_browse receiver\main.crf --depend receiver\main.d)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5779F33C)
 I (../Inc/stm32l0xx_hal_conf.h)(0x5794A29F)
 I (../Inc/mxconstants.h)(0x5794A29F)
