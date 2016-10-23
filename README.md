@@ -48,7 +48,7 @@ lll - decimal digits from 01 to 127
 
 command  R(0xrr)   read rigister of LoRa device from 0x00 to 0x3F (hex mode)
 
-rr - serial number of the register ( from datasheet ) in hex mode ( from 0x00 to 0x3F )
+rr - serial number of the register ( from datasheet ) in hex mode ( from 00 to 3F )
 
 Length of all command 12 byte  !!!
 If number of byte of command < 12 byte - add space code (0x20 hex)
